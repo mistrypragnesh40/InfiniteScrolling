@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="InfiniteScrolling.Views.StudentListPage"
+             Title="Student List">
+    <ContentPage.Content>
+        <CollectionView Margin="10" ItemsSource="{Binding StudentList}" RemainingItemsThresholdReachedCommand="{Binding RemainThresholdReachCommand}" RemainingItemsThreshold="1">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Margin="10">
+                        <Label Text="{Binding Name}" />
+                        <Label Text="{Binding Email}" />
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+            <CollectionView.Footer >
+                <StackLayout  IsVisible="{Binding IsLoading}">
+                    <ActivityIndicator IsRunning="True" />
+                    <Label Text="Loading..."  HorizontalOptions="Center" />
+                </StackLayout>
+            </CollectionView.Footer>
+        </CollectionView>
+    </ContentPage.Content>
+</ContentPage>
